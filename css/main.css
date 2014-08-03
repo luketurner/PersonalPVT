@@ -83,19 +83,20 @@ textarea {
 }
 
 /* ==========================================================================
-   Browse Happy prompt
-   ========================================================================== */
-
-.browsehappy {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
-}
-
-/* ==========================================================================
    Author's custom styles
    ========================================================================== */
+
+* { box-sizing: border-box; }
+
+.container {
+    margin: 15% auto auto auto;
+    text-align: center;
+    font: 14px Consolas;
+}
+
+.choices a {
+    color: inherit;
+}
 
 .view-container {
     display: block;

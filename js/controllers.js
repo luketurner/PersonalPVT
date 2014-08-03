@@ -1,4 +1,6 @@
-var pvtControllers = angular.module('pvtControllers', [])
+var pvtControllers = angular.module('pvtControllers', [
+    'pvtServices'
+]);
 
 pvtControllers.controller('PreTrialCtrl', ['$scope', 'trialSettings', 'colorSchemes',
     function ($scope, trialSettings, colorSchemes) {
