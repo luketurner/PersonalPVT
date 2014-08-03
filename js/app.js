@@ -28,53 +28,96 @@ pvtApp.factory('trialData', function () {
     }
 });
 
-pvtApp.directive('trialTimer', ['$timeout', '$interval', 'trialData', 'trialSettings', function ($timeout, $interval, trialData, trialSettings) {
+pvtApp.factory('trialTimer', ['$timeout', '$interval', function ($timeout, $interval) {
+    var getRandom = function () {
+        return Math.random() * 7 * 1000;
+    };
+    var enabled = false;
+    var started = false;
+    var timer = 0;
+    var intervalPromise;
+    var timeoutPromise;
+    var donePromise;
+    var startTime = 0;
+    var self = {
+            onEnable: $.Callbacks(),
+            onDisable: $.Callbacks(),
+            onStart: $.Callbacks(),
+            onStop: $.Callbacks(), // is passed the ms reaction time
+            onTick: $.Callbacks() // is passed a ms timer value
+        };
+
+    self.enable = function (duration) {
+        enabled = true;
+        // If passed duration, then set a timeout to turn it off after that duration.
+        if (duration) {
+            donePromise = $timeout(self.disable, duration);
+        }
+
+        timeoutPromise = $timeout(self.start, getRandom());
+        self.onEnable.fire();
+    };
+
+    self.disable = function () {
+        enabled = false;
+        $timeout.cancel(timeoutPromise);
+        $timeout.cancel(donePromise);
+        $interval.cancel(intervalPromise);
+        self.onDisable.fire();
+    };
+
+    self.start = function () {
+
+        if (!enabled) return;
+        startTime = Date.now();
+        started = true;
+
+        // start ticking timer
+        intervalPromise = $interval(function () {
+            timer = Date.now() - startTime;
+            self.onTick.fire(timer);
+        }, 10);
+
+        self.onStart.fire();
+    };
+
+    self.stop = function () {
+        if (!enabled || !started) return;
+        started = false;
+        var time = Date.now() - startTime;
+
+        // stop ticking timer
+        $interval.cancel(intervalPromise);
+
+        timeoutPromise = $timeout(self.start, getRandom() + 1000);
+
+        self.onStop.fire(time);
+    };
+    return self;
+}]);
+
+pvtApp.directive('timerDisplay', ["$timeout", 'trialTimer', function ($timeout, trialTimer) {
     return {
-        scope: {
-            onClose: "&onClose"
-        },
-        template: "<div ng-show='enabled'>{{timer}}</div><button type='button' class='close'>&times;</div>",
+        scope: { },
+        restrict: 'E',
+        template: "<div ng-if='showTimer'>{{ value }}</div>",
         link: function (scope, element, attrs) {
-
-            var getRandom = function () {
-                return Math.random() * 7 * 1000;
-            };
-
-            var enable = function () {
-                scope.enabled = true;
-                var startTime = Date.now();
-                scope.timer = 0;
-
-                updater = $interval(function () {
-                    scope.timer = Date.now() - startTime;
-                }, 10);
-
-                element.one('click', function () {
-
-                    $interval.cancel(updater);
-                    var time = Date.now() - startTime;
-                    trialData.times.push(time);
-                    $timeout(function () {
-                        scope.enabled = false;
-                        if (Date.now() < doneTime) {
-                            promise = $timeout(enable, getRandom());
-                        }
-                    }, 1000);
-                });
-            };
-
-            var doneTime = Date.now() + (trialSettings.trial_length * 1000);
-            scope.enabled = false;
-            var updater;
-
-            element.find("button").on("click", function () {
-                $timeout.cancel(promise);
-                $interval.cancel(updater);
-                scope.onClose(scope, element);
+            trialTimer.onStart.add(function () {
+                scope.showTimer = true;
             });
 
-            var promise = $timeout(enable, getRandom());
+            trialTimer.onStop.add(function (value) {
+                scope.value = value;
+                $timeout(function () {
+                    if (!trialTimer.started) {
+                        scope.showTimer = false;
+                    }
+                }, 1000)
+            });
 
+            trialTimer.onTick.add(function (value) {
+                scope.value = value;
+            });
         }
     };
 }]);

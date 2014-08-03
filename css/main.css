@@ -114,7 +114,14 @@ textarea {
     background-color: grey;
 }
 
-.trial-timer div {
+.trial-timer .close {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    z-index: 1000;
+}
+
+.trial-timer timer-display {
     text-align: center;
     width: 500px;
     height: 200px;
