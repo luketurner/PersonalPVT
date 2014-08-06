@@ -43,7 +43,5 @@ pvtControllers.controller('TrialCtrl', ['$scope', '$location', '$document', 'tri
 }]);
 
 pvtControllers.controller('HomeCtrl', ['$scope', function ($scope) {
-    $scope.settings = {
-        'test': 'asdf'
-    };
+
 }]);
