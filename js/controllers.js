@@ -15,6 +15,12 @@ pvtControllers.controller('ResultsCtrl', ['$scope', "trialData", function ($scop
 pvtControllers.controller('TrialCtrl', ['$scope', '$location', '$document', 'trialTimer', 'trialData', function ($scope, $location, $document, trialTimer, trialData) {
     $scope.data = trialData;
     $scope.timer = trialTimer;
+    trialTimer.reset();
+
+//    trialTimer.onStart.add(function () { console.log("start"); });
+//    trialTimer.onStop.add(function () { console.log("stop"); });
+//    trialTimer.onEnable.add(function () { console.log("enable"); });
+//    trialTimer.onDisable.add(function () { console.log("disable"); });
 
     var keyBindHandler = function (e) {
         if (e.keyCode === 32) { // <Space>
@@ -25,7 +31,7 @@ pvtControllers.controller('TrialCtrl', ['$scope', '$location', '$document', 'tri
         }
     };
 
-    var mouseHandler = function () { trialTimer.stop(); };
+    var mouseHandler = function () { trialTimer.stop(); return true; };
 
     trialTimer.onStop.add(function (value) {
         trialData.times.push(value);
@@ -62,10 +68,42 @@ pvtControllers.controller('SignUpCtrl', ['$scope', 'authens', function ($scope, 
     };
 
     $scope.submit = function () {
-        console.log("submitted");
+        if ($scope.userValid && $scope.passwordValid) {
+            authens.createAccount($scope.username, $scope.password)
+                .done(function () {
+                    alert("logged in");
+                })
+                .fail(function () {
+                    $scope.userValid = false;
+                });
+        }
     };
 }]);
 
 pvtControllers.controller('LoginCtrl', ['$scope', 'authens', function ($scope, authens) {
+    $scope.username = "";
+    $scope.password = "";
+    $scope.passwordValid = true;
+    $scope.userValid = true;
 
+    $scope.verifyPassword = function () {
+        $scope.passwordValid = $scope.password.length > 0;
+    };
+
+    $scope.verifyUsername = function () {
+        $scope.userValid = $scope.username.length > 0;
+    };
+
+    $scope.submit = function () {
+        if ($scope.userValid && $scope.passwordValid) {
+            authens.login($scope.username, $scope.password)
+                .done(function () {
+                    alert("logged in");
+                })
+                .fail(function () {
+                    $scope.userValid = false;
+                    $scope.passwordValid = false;
+                });
+        }
+    };
 }]);

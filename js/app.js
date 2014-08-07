@@ -1,6 +1,7 @@
 var pvtApp = angular.module("pvtApp", [
     'mgcrea.ngStrap',
     'ngRoute',
+    'ngAnimate',
     'pvtControllers',
     'pvtServices'
 ]);

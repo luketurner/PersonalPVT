@@ -39,7 +39,6 @@ pvtServices.factory('trialTimer', ['$timeout', '$interval', function ($timeout, 
     };
 
     self.start = function () {
-
         if (!enabled) return;
         startTime = Date.now();
         started = true;
@@ -65,5 +64,14 @@ pvtServices.factory('trialTimer', ['$timeout', '$interval', function ($timeout, 
 
         self.onStop.fire(time);
     };
+
+    self.reset = function () {
+        self.onStart.empty();
+        self.onStop.empty();
+        self.onEnable.empty();
+        self.onDisable.empty();
+        self.onTick.empty();
+    };
+
     return self;
 }]);
