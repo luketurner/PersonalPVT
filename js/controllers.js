@@ -45,3 +45,13 @@ pvtControllers.controller('TrialCtrl', ['$scope', '$location', '$document', 'tri
 pvtControllers.controller('HomeCtrl', ['$scope', function ($scope) {
 
 }]);
+
+pvtControllers.controller('SignUpCtrl', ['$scope', 'authens', function ($scope, authens) {
+    $scope.submit = function () {
+        console.log("submitted");
+    };
+}]);
+
+pvtControllers.controller('LoginCtrl', ['$scope', 'authens', function ($scope, authens) {
+
+}]);
