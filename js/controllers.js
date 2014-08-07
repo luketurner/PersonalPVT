@@ -47,6 +47,20 @@ pvtControllers.controller('HomeCtrl', ['$scope', function ($scope) {
 }]);
 
 pvtControllers.controller('SignUpCtrl', ['$scope', 'authens', function ($scope, authens) {
+    $scope.username = "";
+    $scope.password = "";
+    $scope.password2 = "";
+    $scope.passwordValid = true;
+    $scope.userValid = true;
+
+    $scope.verifyPassword = function () {
+        $scope.passwordValid = $scope.password === $scope.password2;
+    };
+
+    $scope.verifyUsername = function () {
+        $scope.userValid = $scope.username.length > 0;
+    };
+
     $scope.submit = function () {
         console.log("submitted");
     };

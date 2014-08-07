@@ -6,6 +6,29 @@
         <p class="col-xs-6 col-xs-offset-3">This site is not currently served over HTTPS. Please don't use the same password here that you do anywhere else.</p>
     </div>
 
+    <div class="form form-horizontal">
+        <div class="form-group"  ng-class="{ 'has-error': !userValid }">
+            <label class="control-label col-xs-3 col-xs-offset-3">Username</label>
+            <div class="col-xs-2">
+                <input class="form-control" type="password" ng-change="verifyUsername()" ng-model="username">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-3 col-xs-offset-3">Password</label>
+
+            <div class="col-xs-2">
+                <input class="form-control" type="password" ng-change="verifyPassword()" ng-model="password">
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': !passwordValid }">
+            <label class="control-label col-xs-3 col-xs-offset-3">Verify Password</label>
+
+            <div class="col-xs-2">
+                <input class="form-control" type="password" ng-change="verifyPassword()" ng-model="password2">
+            </div>
+        </div>
+    </div>
+
     <div class="row choices">
         <div class="col-xs-4 col-xs-offset-2"><a href="#">< Go Back ></a></div>
         <div class="col-xs-4"><a href="" ng-click="submit()">< Submit ></a></div>
