@@ -8,7 +8,7 @@ data even if you only take the test once or twice a day.
 
 When finished, you will be able to:
 
- * Take anonymous PVT tests. \[Implemented\]
+ * Take anonymous PVT tests.
  * View test results graphed, alongside relevant statistics.
  * Create accounts to save results and analyze trends over time.
  * Export all result data to CSV for your own records and analysis.
