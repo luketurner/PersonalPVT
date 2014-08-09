@@ -1,0 +1,24 @@
+{
+  "name": "PersonalPVT",
+  "version": "0.1.0",
+  "description": "A website for psychomotor vigilance task testing",
+  "main": "app.js",
+  "dependencies": { },
+  "devDependencies": {
+      "grunt": "^0.4.5",
+      "grunt-contrib-concat": "^0.5.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luketurner/PersonalPVT.git"
+  },
+  "author": "Luke Turner",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luketurner/PersonalPVT/issues"
+  },
+  "homepage": "http://pvt.luketurner.org"
+}
