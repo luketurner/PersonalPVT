@@ -31,10 +31,11 @@ pvtServices.factory('trialTimer', ['$timeout', '$interval', function ($timeout, 
     };
 
     self.disable = function () {
-        enabled = false;
         $timeout.cancel(timeoutPromise);
         $timeout.cancel(donePromise);
         $interval.cancel(intervalPromise);
+        enabled = false;
+        started = false;
         self.onDisable.fire();
     };
 
@@ -61,7 +62,6 @@ pvtServices.factory('trialTimer', ['$timeout', '$interval', function ($timeout, 
         $interval.cancel(intervalPromise);
 
         timeoutPromise = $timeout(self.start, getRandom() + 1000);
-
         self.onStop.fire(time);
     };
 

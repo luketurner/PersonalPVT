@@ -2,25 +2,22 @@ var pvtControllers = angular.module('pvtControllers', [
     'pvtServices'
 ]);
 
-pvtControllers.controller('PreTrialCtrl', ['$scope', 'trialSettings', 'colorSchemes',
-    function ($scope, trialSettings, colorSchemes) {
+pvtControllers.controller('PreTrialCtrl', ['$scope', 'trialSettings',
+    function ($scope, trialSettings) {
         $scope.settings = trialSettings;
-        $scope.color_schemes = colorSchemes;
 }]);
 
 pvtControllers.controller('ResultsCtrl', ['$scope', "trialData", function ($scope, trialData) {
     $scope.times = trialData.times;
+    $scope.chartData = [];
+    for (var i = 0; i < 100; i++) { $scope.chartData.push( Math.random() * 1000); } // some junk data for testing
+    $scope.chartSettings = {};
 }]);
 
 pvtControllers.controller('TrialCtrl', ['$scope', '$location', '$document', 'trialTimer', 'trialData', function ($scope, $location, $document, trialTimer, trialData) {
     $scope.data = trialData;
     $scope.timer = trialTimer;
     trialTimer.reset();
-
-//    trialTimer.onStart.add(function () { console.log("start"); });
-//    trialTimer.onStop.add(function () { console.log("stop"); });
-//    trialTimer.onEnable.add(function () { console.log("enable"); });
-//    trialTimer.onDisable.add(function () { console.log("disable"); });
 
     var keyBindHandler = function (e) {
         if (e.keyCode === 32) { // <Space>
@@ -34,13 +31,15 @@ pvtControllers.controller('TrialCtrl', ['$scope', '$location', '$document', 'tri
     var mouseHandler = function () { trialTimer.stop(); return true; };
 
     trialTimer.onStop.add(function (value) {
-        trialData.times.push(value);
+        if (value) { trialData.times.push(value); }
     });
 
     trialTimer.onDisable.add(function () {
-        $document.off("keydown", keyBindHandler);
-        $document.off("click", mouseHandler);
-        $location.path('/results');
+        $scope.$apply(function () {
+            $document.off("keydown", keyBindHandler);
+            $document.off("click", mouseHandler);
+            $location.path('/results');
+        });
     });
 
     trialTimer.enable(60 * 1000);
