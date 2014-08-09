@@ -1,11 +1,9 @@
-var pvtServices = angular.module('pvtServices');
-
-pvtServices.factory('authens', function () {
-    var authens = {};
+angular.module('pvtApp').factory('authenticator', function () {
+    var auth = {};
 
     // Tries to create an account.
     // Returns a promise that is resolved if the creation was successful, and rejected otherwise.
-    authens.createAccount = function (user, pass) {
+    auth.createAccount = function (user, pass) {
         var resp = $.Deferred();
         if (user === "test" || user === "") { // pretend this is DB access code
             resp.reject();
@@ -18,7 +16,7 @@ pvtServices.factory('authens', function () {
 
     // Tries to login with given credentials.
     // Returns a promise that is resolved if login was successful, and rejected otherwise
-    authens.login = function (user, pass) {
+    auth.login = function (user, pass) {
         var resp = $.Deferred();
         if (user === "" || pass === "") {
             resp.reject();
@@ -32,5 +30,5 @@ pvtServices.factory('authens', function () {
         return resp.promise();
     };
 
-    return authens;
+    return auth;
 });

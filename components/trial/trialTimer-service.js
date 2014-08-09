@@ -1,6 +1,4 @@
-var pvtServices = angular.module('pvtServices');
-
-pvtServices.factory('trialTimer', ['$timeout', '$interval', function ($timeout, $interval) {
+angular.module('pvtApp').factory('trialTimer', ['$timeout', '$interval', function ($timeout, $interval) {
     var getRandom = function () {
         return Math.random() * 7 * 1000;
     };

@@ -1,6 +1,4 @@
-var pvtServices = angular.module('pvtServices', []);
-
-pvtServices.factory('trialData', function () {
+angular.module('pvtApp').factory('trialData', function () {
     var trialData = {
         'times': []
     };

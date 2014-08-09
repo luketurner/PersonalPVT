@@ -12,8 +12,9 @@
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="app.css">
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <!-- Dependencies -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-route/angular-route.js"></script>
@@ -21,11 +22,24 @@
         <script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
         <script src="bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
         <script src="bower_components/chartjs/Chart.js"></script>
-        <script src="js/trialData.js"></script>
-        <script src="js/trialTimer.js"></script>
-        <script src="js/authens.js"></script>
-        <script src="js/controllers.js"></script>
-        <script src="js/app.js"></script>
+        <!-- Concatenated app (not needed until deployment) -->
+        <!-- <script src="app.concat.js"></script> -->
+        <!-- Main app (include before other app code) -->
+        <script src="app.js"></script>
+        <!-- Services and directives -->
+        <script src="components/data/trialData-service.js"></script>
+        <script src="components/data/scatterPlot-directive.js"></script>
+        <script src="components/trial/trialTimer-service.js"></script>
+        <script src="components/trial/timerDisplay-directive.js"></script>
+        <script src="components/settings/trialSettings-service.js"></script>
+        <script src="components/authenticator/authenticator-service.js"></script>
+        <!-- controllers -->
+        <script src="home/home-controller.js"></script>
+        <script src="signup/signup-controller.js"></script>
+        <script src="login/login-controller.js"></script>
+        <script src="pretrial/pretrial-controller.js"></script>
+        <script src="trial/trial-controller.js"></script>
+        <script src="results/results-controller.js"></script>
     </head>
     <body ng-app="pvtApp">
         <div class="viewtiful container" ng-view></div>
