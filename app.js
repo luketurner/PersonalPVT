@@ -23,13 +23,9 @@ pvtApp.config(['$routeProvider',
             templateUrl: 'home/home.html',
             controller: 'HomeCtrl'
         })
-        .when('/signup', {
-            templateUrl: 'signup/signup.html',
-            controller: 'SignUpCtrl'
-        })
-        .when('/login', {
-            templateUrl: 'login/login.html',
-            controller: 'LoginCtrl'
+        .when('/history', {
+            templateUrl: 'history/history.html',
+            controller: 'HistoryCtrl'
         })
         .otherwise({
             redirectTo: '/home'
