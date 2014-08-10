@@ -6,7 +6,7 @@ they are occurring. They will manifest as a slowing of reflexes.
 Usually, testers in studies will have to take a ten-minute test as many as 6 times a day. But I think you can still get interesting 
 data even if you only take the test once or twice a day.
 
-When finished, you will be able to:
+When the app's finished, you will be able to:
 
  * Take anonymous PVT tests.
  * View test results graphed, alongside relevant statistics.
