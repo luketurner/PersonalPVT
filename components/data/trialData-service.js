@@ -1,6 +1,6 @@
 angular.module('pvtApp').factory('trialData', function () {
     var trialData = {
-        'times': []
+        times: []
     };
 
     var numCmp = function (x,y) { return x - y; };

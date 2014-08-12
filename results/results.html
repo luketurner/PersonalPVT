@@ -1,5 +1,7 @@
 <h1>Results</h1>
 
+<button class="btn btn-default btn-large" ng-click="saveData()" ng-disabled="isSaved">{{ isSaved ? "Saved" : "Save" }}</button>
+
 <scatter-plot data="chartData" options="chartSettings"></scatter-plot>
 
 <div ng-repeat="time in trialData.times">

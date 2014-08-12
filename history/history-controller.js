@@ -1,3 +1,3 @@
-angular.module('pvtApp').controller('HistoryCtrl', function () {
-
-});
+angular.module('pvtApp').controller('HistoryCtrl', ["$scope", "trialStore", function ($scope, trialStore) {
+    $scope.store = trialStore;
+}]);
