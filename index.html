@@ -17,7 +17,7 @@
         <!-- Dependencies -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="bower_components/angular/angular.js"></script>
-        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
         <script src="bower_components/angular-animate/angular-animate.js"></script>
         <script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
         <script src="bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
@@ -27,7 +27,7 @@
         <!-- Main app (include before other app code) -->
         <script src="app.js"></script>
         <!-- Services and directives -->
-        <script src="components/data/trialData-service.js"></script>
+        <script src="components/data/analyzeData-service.js"></script>
         <script src="components/data/scatterPlot-directive.js"></script>
         <script src="components/data/trialStore-service.js"></script>
         <script src="components/trial/trialTimer-service.js"></script>
@@ -35,12 +35,11 @@
         <script src="components/settings/trialSettings-service.js"></script>
         <!-- controllers -->
         <script src="home/home-controller.js"></script>
-        <script src="history/history-controller.js"></script>
         <script src="pretrial/pretrial-controller.js"></script>
         <script src="trial/trial-controller.js"></script>
         <script src="results/results-controller.js"></script>
     </head>
     <body ng-app="pvtApp">
-        <div class="viewtiful container" ng-view></div>
+        <div class="viewtiful container" ui-view></div>
     </body>
 </html>

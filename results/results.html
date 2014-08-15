@@ -1,20 +1,8 @@
 <h1>Results</h1>
 
-<button class="btn btn-default btn-large" ng-click="saveData()" ng-disabled="isSaved">{{ isSaved ? "Saved" : "Save" }}</button>
+<ul ng-repeat="trial in trials">
+    <li><a ui-sref=".trial({ trialId: trial.date.getTime() })">{{ trial.date }}</a></li>
+</ul>
 
-<scatter-plot data="chartData" options="chartSettings"></scatter-plot>
+<div ui-view></div>
 
-<div ng-repeat="time in trialData.times">
-    <div>{{time}}</div>
-</div>
-
-<div>
-    <div> Mean: {{ trialData.mean() }} </div>
-    <div> Median: {{ trialData.median() }} </div>
-    <div> StdDev: {{ trialData.stdDev() }} </div>
-    <div> Top 10%: {{ trialData.topTenPercent() }} </div>
-    <div> Bottom 10%: {{ trialData.bottomTenPercent() }} </div>
-    <div> Max: {{ trialData.max() }} </div>
-    <div> Min: {{ trialData.min() }} </div>
-    <div> Values above .5s: {{ trialData.findLapses(500) }} </div>
-</div>

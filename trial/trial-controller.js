@@ -1,4 +1,5 @@
-angular.module('pvtApp').controller('TrialCtrl', ['$scope', '$location', '$document', 'trialTimer', 'trialData', function ($scope, $location, $document, trialTimer, trialData) {
+angular.module('pvtApp').controller('TrialCtrl', ['$scope', '$state', '$document', 'trialTimer', 'trialData', 'trialStore',
+    function ($scope, $state, $document, trialTimer, trialData, trialStore) {
     $scope.data = trialData;
     $scope.timer = trialTimer;
     trialTimer.reset();
@@ -22,7 +23,8 @@ angular.module('pvtApp').controller('TrialCtrl', ['$scope', '$location', '$docum
         $scope.$apply(function () {
             $document.off("keydown", keyBindHandler);
             $document.off("click", mouseHandler);
-            $location.path('/results');
+            trialStore.save(trialData.times);
+            $state.go('results'); // loads most recent result
         });
     });
 

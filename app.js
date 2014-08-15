@@ -1,34 +1,37 @@
 var pvtApp = angular.module("pvtApp", [
     'mgcrea.ngStrap',
-    'ngRoute',
+    'ui.router',
     'ngAnimate'
 ]);
 
-pvtApp.config(['$routeProvider',
-    function ($routeProvider) {
-        $routeProvider
-        .when('/pretrial', {
-            templateUrl: 'pretrial/pretrial.html',
-            controller: 'PreTrialCtrl'
-        })
-        .when('/trial', {
-            templateUrl: 'trial/trial.html',
-            controller: 'TrialCtrl'
-        })
-        .when('/results', {
-            templateUrl: 'results/results.html',
-            controller: 'ResultsCtrl'
-        })
-        .when('/home', {
-            templateUrl: 'home/home.html',
-            controller: 'HomeCtrl'
-        })
-        .when('/history', {
-            templateUrl: 'history/history.html',
-            controller: 'HistoryCtrl'
-        })
-        .otherwise({
-            redirectTo: '/home'
-        });
-    }
-]);
+pvtApp.config(['$stateProvider', function ($stateProvider) {
+    $stateProvider.state('pretrial', {
+        url: '/pretrial',
+        templateUrl: 'pretrial/pretrial.html',
+        controller: 'PreTrialCtrl'
+    })
+    .state('trial', {
+        url: '/trial',
+        templateUrl: 'trial/trial.html',
+        controller: 'TrialCtrl'
+    })
+    .state('results', {
+        url: '/results',
+        templateUrl: 'results/results.html',
+        controller: 'ResultsCtrl'
+    })
+    .state('results.trial', {
+        url: '/:trialId',
+        templateUrl: 'results/results.trial.html',
+        controller: 'ResultsTrialCtrl'
+    })
+    .state('home', {
+        url: '/',
+        templateUrl: 'home/home.html',
+        controller: 'HomeCtrl'
+    })
+}]);
+
+pvtApp.config(['$urlRouterProvider', function ($urlRouterProvider) {
+    $urlRouterProvider.otherwise('/')
+}]);
