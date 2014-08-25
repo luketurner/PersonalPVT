@@ -98,9 +98,11 @@ textarea {
     font: 14px Consolas,Monaco,Inconsolata,"Courier New",mono;
 }
 
-.choices a {
-    color: inherit;
-}
+.choices { margin-top: 15px; color: #777; }
+.choices a { color: #777; }
+.choices a.danger { color: #a94442; }
+.choices a:hover { color: inherit; }
+.choices strong { color: black; }
 
 .view-container {
     display: block;
@@ -130,6 +132,11 @@ textarea {
     color: #333;
     font-weight: bold;
 }
+
+.result-list a:hover { color: inherit; }
+
+.copy { color: #777; }
+.copy strong { color: black; }
 
 .result-info-table { max-width: 400px; margin: auto; }
 

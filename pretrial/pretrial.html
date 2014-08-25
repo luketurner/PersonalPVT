@@ -1,16 +1,6 @@
 <div>
-    <h1>Anonymous Trial</h1>
-    <div class="form form-horizontal">
-        <div class="form-group">
-            <label for="trial-length" class="control-label col-xs-3 col-xs-offset-3">Trial Length</label>
-            <div class="col-xs-2">
-                <input class="form-control" type="number" placeholder="600" id="trial-length"
-                                         ng-model="settings.trial_length"/>
-            </div>
-        </div>
-    </div>
+    <h1 style="margin-bottom: 50px;">Trial Starting In {{ seconds }}</h1>
     <div class="choices">
-        <div class="col-xs-4 col-xs-offset-2"><a ui-sref="home">< Go Back ></a></div>
-        <a class="" ui-sref="trial">< Begin ></a>
+        <div><a ui-sref="home">< Cancel ></a></div>
     </div>
 </div>

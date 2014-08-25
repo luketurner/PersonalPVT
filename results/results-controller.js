@@ -3,7 +3,7 @@ angular.module('pvtApp').controller('ResultsCtrl', ['$scope', '$state', 'trialSt
     $scope.settings = settings;
 
 
-    if ($state.is("results") && $scope.trials.length > 0) {
+    if ($state.is("results")) {
         $state.go('.all');
     }
 
@@ -13,9 +13,12 @@ angular.module('pvtApp').controller('ResultsCtrl', ['$scope', '$state', 'trialSt
     };
 
     $scope.getDateSpan = function (trials) {
-        var date1 = moment(trials[0].date);
-        var date2 = moment(trials[trials.length - 1].date);
-        return date2.diff(date1, 'days');
+        if (trials.length > 0) {
+            var date1 = moment(trials[0].date);
+            var date2 = moment(trials[trials.length - 1].date);
+            return date2.diff(date1, 'days');
+        }
+        return 0;
     };
 
     $scope.textForTrial = function (trial) {
@@ -24,7 +27,7 @@ angular.module('pvtApp').controller('ResultsCtrl', ['$scope', '$state', 'trialSt
     };
 
     $scope.idForTrial = function (trial) {
-        return trial.date.getTime();
+        return trial.date;
     };
 
 }]);

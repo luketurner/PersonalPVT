@@ -10,6 +10,11 @@ pvtApp.config(['$stateProvider', function ($stateProvider) {
         templateUrl: 'pretrial/pretrial.html',
         controller: 'PreTrialCtrl'
     })
+    .state('settings', {
+        url: '/settings',
+        templateUrl: 'settings/settings.html',
+        controller: 'SettingsCtrl'
+    })
     .state('trial', {
         url: '/trial',
         templateUrl: 'trial/trial.html',
