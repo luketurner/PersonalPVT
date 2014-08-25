@@ -25,6 +25,10 @@ pvtApp.config(['$stateProvider', function ($stateProvider) {
         templateUrl: 'results/results.trial.html',
         controller: 'ResultsTrialCtrl'
     })
+    .state('results.all', {
+        templateUrl: 'results/results.all.html',
+        controller: 'AllResultsCtrl'
+    })
     .state('home', {
         url: '/',
         templateUrl: 'home/home.html',

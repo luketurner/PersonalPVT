@@ -95,7 +95,7 @@ textarea {
     right: 0;
     bottom: 0;
     text-align: center;
-    font: 14px Consolas;
+    font: 14px Consolas,Monaco,Inconsolata,"Courier New",mono;
 }
 
 .choices a {
@@ -121,10 +121,29 @@ textarea {
     margin-top: 15%;
 }
 
-.chart-data {
-    width: 700px;
-    height: 300px;
+.result-list {
+    text-align:left;
+    color: #888;
 }
+
+.result-list a {
+    color: #333;
+    font-weight: bold;
+}
+
+.result-info-table { max-width: 400px; margin: auto; }
+
+.mini-btn {
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.scatter-plot { padding: 30px 15px;}
 
 .viewtiful.ng-enter, .viewtiful.ng-leave
 {
