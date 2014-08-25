@@ -1,11 +1,11 @@
 <h1>Results</h1>
 
 <div class="col-sm-3">
-    <div class="list-group">
-        <a ng-repeat="(index, trial) in trials" class="list-group-item" ui-sref=".trial({ trialId: idForTrial(trial) })" ui-sref-active="list-group-item-info">
-            <h4 class="list-group-item-heading">{{ titleForTrial(trial) }}</h4>
-            <p class="list-group-item-text">{{ textForTrial(trial) }}</p>
-        </a>
+    <div>
+        <div ng-repeat="(index, trial) in trials">
+            <a ui-sref=".trial({ trialId: idForTrial(trial) })" ui-sref-active="active">{{ titleForTrial(trial) }}</a>
+            <p>{{ textForTrial(trial) }}</p>
+        </div>
     </div>
 </div>
 <div ui-view class="col-sm-8"></div>

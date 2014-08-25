@@ -20,12 +20,10 @@ angular.module('pvtApp').controller('TrialCtrl', ['$scope', '$state', '$document
     });
 
     trialTimer.onDisable.add(function () {
-        $scope.$apply(function () {
-            $document.off("keydown", keyBindHandler);
-            $document.off("click", mouseHandler);
-            trialStore.save($scope.data);
-            $state.go('results'); // loads most recent result
-        });
+        $document.off("keydown", keyBindHandler);
+        $document.off("click", mouseHandler);
+        trialStore.save($scope.data);
+        $state.go('results'); // loads most recent result
     });
 
     trialTimer.enable(60 * 1000);
