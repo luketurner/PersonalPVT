@@ -5,7 +5,7 @@ angular.module("pvtApp").directive('scatterPlot', [function () {
             options: "="
         },
         restrict: 'E',
-        template: '<canvas width="500" height="200" style="width: 500px; height: 200px"></canvas>',
+        template: '<canvas width="400" height="150" style="width: 400px; height: 150px"></canvas>',
         link: function (scope, element, attrs) {
             var canvas = $(element).find("canvas")[0];
             var labels = [];

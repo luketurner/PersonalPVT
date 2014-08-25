@@ -1,15 +1,1 @@
 <scatter-plot data="data.list" options="chartSettings"></scatter-plot>
-
-<div ng-repeat="time in data.list">
-    <div>{{time}}</div>
-</div>
-
-<div>
-    <div> Mean: {{ data.mean() }} </div>
-    <div> Median: {{ data.median() }} </div>
-    <div> Top 10%: {{ data.topTenPercent() }} </div>
-    <div> Bottom 10%: {{ data.bottomTenPercent() }} </div>
-    <div> Max: {{ data.max() }} </div>
-    <div> Min: {{ data.min() }} </div>
-    <div> Values above .5s: {{ data.findLapses(500) }} </div>
-</div>
