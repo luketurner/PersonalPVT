@@ -119,6 +119,8 @@ textarea {
     z-index: 1000;
 }
 
+.instruction-timer { width: 400px; height: 150px; text-align: center; margin: auto; }
+
 .trial-timer h1 {
     margin-top: 15%;
 }

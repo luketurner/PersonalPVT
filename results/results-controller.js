@@ -2,9 +2,12 @@ angular.module('pvtApp').controller('ResultsCtrl', ['$scope', '$state', 'trialSt
     $scope.trials = trialStore.all();
     $scope.settings = settings;
 
-
     if ($state.is("results")) {
-        $state.go('.all');
+        if ($scope.trials.length > 1) {
+            $state.go('.all');
+        } else {
+            $state.go('.trial', { trialId: $scope.trials[0].date });
+        }
     }
 
     $scope.titleForTrial = function (trial) {

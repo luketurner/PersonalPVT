@@ -7,8 +7,16 @@ var pvtApp = angular.module("pvtApp", [
 pvtApp.config(['$stateProvider', function ($stateProvider) {
     $stateProvider.state('pretrial', {
         url: '/pretrial',
-        templateUrl: 'pretrial/pretrial.html',
+        template: "<div ui-view></div>",
         controller: 'PreTrialCtrl'
+    })
+    .state('pretrial.instructions', {
+        templateUrl: 'pretrial/pretrial.instructions.html',
+        controller: 'PreTrialInstructionsCtrl'
+    })
+    .state('pretrial.countdown', {
+        templateUrl: 'pretrial/pretrial.countdown.html',
+        controller: 'PreTrialCountdownCtrl'
     })
     .state('settings', {
         url: '/settings',
@@ -33,6 +41,9 @@ pvtApp.config(['$stateProvider', function ($stateProvider) {
     .state('results.all', {
         templateUrl: 'results/results.all.html',
         controller: 'AllResultsCtrl'
+    })
+    .state('results.empty', {
+        templateUrl: 'results/results.empty.html'
     })
     .state('home', {
         url: '/',

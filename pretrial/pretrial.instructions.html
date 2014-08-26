@@ -1,0 +1,31 @@
+
+<h1>Instructions</h1>
+
+<div class="row copy">
+    <p class="col-xs-6 col-xs-offset-3">
+        Welcome! PVT testing is easy to understand: it's just a reflex game. Some numbers will flash onto the screen
+        suddenly, and your job will be to respond as soon as possible, either with the spacebar or the mouse. When
+        someone plays it, the screen looks something like this:
+    </p>
+    <p class="col-xs-6 col-xs-offset-3">
+        <h2 class="instruction-timer"><timer-display></timer-display></h2>
+    </p>
+    <p class="col-xs-6 col-xs-offset-3">
+        The game will last for {{ settings.trial_length }} seconds. If you want to change the length, visit your
+        <a ui-sref="settings">settings</a>. You can also end the game at any time by clicking the x in the upper right
+        or by pressing escape.
+    </p>
+    <p class="col-xs-8 col-xs-offset-3">
+    <span class="checkbox" style="text-align: left;">
+        <label>
+            <input type="checkbox" ng-model="settings.show_instructions"> Show these instructions before trial
+        </label>
+    </span>
+    </p>
+
+    <div class="row choices">
+        <div class="col-xs-3 col-xs-offset-3"><a ui-sref="home">< Go Back ></a></div>
+        <div class="col-xs-3"><a ui-sref="^.countdown"><strong>< Take Test ></strong></a></div>
+    </div>
+</div>
+
