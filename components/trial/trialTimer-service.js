@@ -1,4 +1,4 @@
-angular.module('pvtApp').factory('trialTimer', ['$timeout', '$interval', function ($timeout, $interval) {
+angular.module('pvtApp').factory('trialTimer', function ($timeout, $interval) {
     var getRandom = function () {
         return Math.random() * 7 * 1000;
     };
@@ -72,4 +72,4 @@ angular.module('pvtApp').factory('trialTimer', ['$timeout', '$interval', functio
     };
 
     return self;
-}]);
+});

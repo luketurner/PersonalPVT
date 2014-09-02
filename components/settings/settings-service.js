@@ -1,4 +1,4 @@
-angular.module("pvtApp").factory('settings', ['$rootScope', "$window", function ($rootScope, $window) {
+angular.module("pvtApp").factory('settings', function ($rootScope, $window) {
     var vals = {}; // holds actual setting values
     var settings = {}; // holds setting getters and setters (returned)
     var store = $window.localStorage;
@@ -32,4 +32,4 @@ angular.module("pvtApp").factory('settings', ['$rootScope', "$window", function 
     makeSetting("show_instructions", saved.show_instructions === false ? false : true);
 
     return settings;
-}]);
+});

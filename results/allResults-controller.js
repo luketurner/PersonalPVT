@@ -1,6 +1,3 @@
-/**
- * Created by Luke on 8/25/2014.
- */
 angular.module("pvtApp").controller('AllResultsCtrl', function ($scope, $stateParams, $state, $timeout, trialStore, analyzeData, settings) {
     var data = trialStore.all();
     var undoData = null;
@@ -11,7 +8,8 @@ angular.module("pvtApp").controller('AllResultsCtrl', function ($scope, $statePa
     }
 
     $scope.reallyDelete = function () {
-        console.log("deleted");//trialStore.deleteAll();
+        trialStore.deleteAll();
+        // Following is a hack to replace $state.reload() because that doesn't reload controllers
         var current = $state.current;
         var params = angular.copy($stateParams);
         $state.transitionTo(current, params, { reload: true, inherit: true, notify: true });

@@ -11,10 +11,12 @@ pvtApp.config(['$stateProvider', function ($stateProvider) {
         controller: 'PreTrialCtrl'
     })
     .state('pretrial.instructions', {
+        url: '/instructions',
         templateUrl: 'pretrial/pretrial.instructions.html',
         controller: 'PreTrialInstructionsCtrl'
     })
     .state('pretrial.countdown', {
+        url: '/countdown',
         templateUrl: 'pretrial/pretrial.countdown.html',
         controller: 'PreTrialCountdownCtrl'
     })

@@ -1,4 +1,4 @@
-angular.module('pvtApp').factory('trialStore', ['$window', function ($window) {
+angular.module('pvtApp').factory('trialStore', function ($window) {
     var trialStore = { };
     var prefix = "TRIAL";
     var store = $window.localStorage;
@@ -54,4 +54,4 @@ angular.module('pvtApp').factory('trialStore', ['$window', function ($window) {
     trialStore.hasUndo = function () { return undoData != null; };
 
     return trialStore;
-}]);
+});

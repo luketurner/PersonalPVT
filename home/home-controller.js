@@ -1,3 +1,3 @@
-angular.module('pvtApp').controller('HomeCtrl', ['$scope', function ($scope) {
+angular.module('pvtApp').controller('HomeCtrl', function ($scope) {
 
-}]);
+});

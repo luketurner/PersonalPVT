@@ -1,4 +1,4 @@
-angular.module('pvtApp').controller('PreTrialInstructionsCtrl', ['$scope', '$timeout', '$state', 'trialTimer', 'settings', function ($scope, $timeout, $state, trialTimer, settings) {
+angular.module('pvtApp').controller('PreTrialInstructionsCtrl', function ($scope, $timeout, $state, trialTimer, settings) {
     var autoResponder;
     var getRandom = function () {
         return Math.random() * 0.8 * 1000 + 200;
@@ -24,4 +24,4 @@ angular.module('pvtApp').controller('PreTrialInstructionsCtrl', ['$scope', '$tim
     $scope.settings = settings;
     trialTimer.enable(10000 * 1000);
 
-}]);
+});

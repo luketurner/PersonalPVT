@@ -1,12 +1,16 @@
-angular.module('pvtApp').controller('ResultsCtrl', ['$scope', '$state', 'trialStore', 'analyzeData', 'settings', function ($scope, $state, trialStore, analyzeData, settings) {
+angular.module('pvtApp').controller('ResultsCtrl', function ($scope, $state, trialStore, analyzeData, settings) {
     $scope.trials = trialStore.all();
     $scope.settings = settings;
 
     if ($state.is("results")) {
         if ($scope.trials.length > 1) {
             $state.go('.all');
-        } else {
+        }
+        if ($scope.trials.length == 1) {
             $state.go('.trial', { trialId: $scope.trials[0].date });
+        }
+        else {
+            $state.go(".empty");
         }
     }
 
@@ -33,4 +37,4 @@ angular.module('pvtApp').controller('ResultsCtrl', ['$scope', '$state', 'trialSt
         return trial.date;
     };
 
-}]);
+});

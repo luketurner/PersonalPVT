@@ -1,5 +1,8 @@
-angular.module('pvtApp').controller('PreTrialCountdownCtrl', ['$scope', '$timeout', '$interval', '$state', function ($scope, $timeout, $interval, $state) {
+angular.module('pvtApp').controller('PreTrialCountdownCtrl', function ($scope, $timeout, $interval, $window, $state) {
     $scope.seconds = 5;
+    $scope.back = function () {
+        $window.history.back();
+    };
 
     var countdown = $interval(function () {
         $scope.seconds -= 1;
@@ -11,4 +14,4 @@ angular.module('pvtApp').controller('PreTrialCountdownCtrl', ['$scope', '$timeou
             $state.go("trial");
         }
     }, $scope.seconds * 1000);
-}]);
+});

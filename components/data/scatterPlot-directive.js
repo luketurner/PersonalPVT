@@ -1,4 +1,4 @@
-angular.module("pvtApp").directive('scatterPlot', ['$document', function ($document) {
+angular.module("pvtApp").directive('scatterPlot', function ($document) {
     return {
         scope: {
             data: "=",
@@ -7,6 +7,10 @@ angular.module("pvtApp").directive('scatterPlot', ['$document', function ($docum
         restrict: 'E',
         template: '<canvas width="400" height="150" style="width: 400px; height: 150px"></canvas>',
         link: function (scope, element, attrs) {
+            if (!scope.data) {
+                return;
+            }
+
             var canvas = $(element).find("canvas")[0];
 
             if (scope.data.length) {
@@ -40,4 +44,4 @@ angular.module("pvtApp").directive('scatterPlot', ['$document', function ($docum
             var chart = new Chart(canvas.getContext("2d")).Line(data, options);
         }
     };
-}]);
+});
