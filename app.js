@@ -4,7 +4,12 @@ var pvtApp = angular.module("pvtApp", [
     'ngAnimate'
 ]);
 
-pvtApp.config(['$stateProvider', function ($stateProvider) {
+// Fixing Angular issue that breaks blob links
+pvtApp.config(function($compileProvider) {
+    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|tel|file|blob):/);
+});
+
+pvtApp.config(function ($stateProvider) {
     $stateProvider.state('pretrial', {
         url: '/pretrial',
         template: "<div ui-view></div>",
@@ -52,8 +57,8 @@ pvtApp.config(['$stateProvider', function ($stateProvider) {
         templateUrl: 'home/home.html',
         controller: 'HomeCtrl'
     })
-}]);
+});
 
-pvtApp.config(['$urlRouterProvider', function ($urlRouterProvider) {
+pvtApp.config(function ($urlRouterProvider) {
     $urlRouterProvider.otherwise('/')
-}]);
+});

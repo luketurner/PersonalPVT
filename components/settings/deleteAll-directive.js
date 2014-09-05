@@ -4,7 +4,7 @@ angular.module('pvtApp').directive('deleteAll', function ($timeout, $state, $q) 
             ondelete: '&onDelete'
         },
         restrict: 'E',
-        template: '<a ng-click="step()" href="">&lt; {{ message }} &gt;</a>',
+        template: '<a ng-click="step()" href="" class="text-danger">&lt; {{ message }} &gt;</a>',
         link: function (scope, element, attrs) {
             var acceptsInput = true;
             var messageIndex = 0;

@@ -1,6 +1,6 @@
 angular.module('pvtApp').factory('trialTimer', function ($timeout, $interval) {
     var getRandom = function () {
-        return Math.random() * 7 * 1000;
+        return (Math.random() * 6 * 1000) + 4000;
     };
     var enabled = false;
     var started = false;
@@ -46,20 +46,20 @@ angular.module('pvtApp').factory('trialTimer', function ($timeout, $interval) {
         intervalPromise = $interval(function () {
             timer = Date.now() - startTime;
             self.onTick.fire(timer);
-        }, 10);
+        }, 25);
 
         self.onStart.fire();
     };
 
     self.stop = function () {
-        if (!enabled || !started) return;
+        if (!(enabled && started)) return;
         started = false;
         var time = Date.now() - startTime;
 
         // stop ticking timer
         $interval.cancel(intervalPromise);
 
-        timeoutPromise = $timeout(self.start, getRandom() + 1000);
+        timeoutPromise = $timeout(self.start, getRandom());
         self.onStop.fire(time);
     };
 

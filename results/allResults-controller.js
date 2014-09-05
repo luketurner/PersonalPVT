@@ -1,10 +1,13 @@
-angular.module("pvtApp").controller('AllResultsCtrl', function ($scope, $stateParams, $state, $timeout, trialStore, analyzeData, settings) {
+angular.module("pvtApp").controller('AllResultsCtrl', function ($scope, $window, $stateParams, $state, $timeout, trialStore, analyzeData, settings) {
     var data = trialStore.all();
     var undoData = null;
 
     if (!data || data.length === 0) {
         $state.go("^.empty");
-        return;
+    }
+
+    if (data.length === 1) {
+        $state.go("^.trial", { 'trialId': data[0].date });
     }
 
     $scope.reallyDelete = function () {
@@ -14,10 +17,6 @@ angular.module("pvtApp").controller('AllResultsCtrl', function ($scope, $statePa
         var params = angular.copy($stateParams);
         $state.transitionTo(current, params, { reload: true, inherit: true, notify: true });
     };
-
-    if (trialStore.hasUndo()) {
-
-    }
 
     $scope.lapseThreshold = settings.lapse_threshold;
     $scope.modifyThreshold = function (x) {
@@ -56,4 +55,6 @@ angular.module("pvtApp").controller('AllResultsCtrl', function ($scope, $statePa
         ]
     };
 
+    var csv_data = data.map(function (x) { return x.date + "," + x.data.join(","); }).join("\n");
+    $scope.downloadUrl = $window.URL.createObjectURL(new Blob([csv_data], { type: 'text/csv' }));
 });

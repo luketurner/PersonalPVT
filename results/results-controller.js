@@ -6,12 +6,6 @@ angular.module('pvtApp').controller('ResultsCtrl', function ($scope, $state, tri
         if ($scope.trials.length > 1) {
             $state.go('.all');
         }
-        if ($scope.trials.length == 1) {
-            $state.go('.trial', { trialId: $scope.trials[0].date });
-        }
-        else {
-            $state.go(".empty");
-        }
     }
 
     $scope.titleForTrial = function (trial) {

@@ -163,26 +163,13 @@ textarea {
     transition: 100ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
 }
 
-.viewtiful.ng-enter {
+.viewtiful.ng-enter, .viewtiful.ng-leave-active {
     opacity: 0;
 }
 
-.viewtiful.ng-enter-active {
+.viewtiful.ng-enter-active, .viewtiful.ng-leave {
     opacity: 1;
 }
-
-.viewtiful.ng-leave {
-    opacity: 1;
-}
-
-.viewtiful.ng-leave-active {
-    opacity: 0;
-}
-
-
-
-
-
 
 
 
