@@ -2,7 +2,7 @@
 
 <div class="col-sm-4">
     <ul class="list-unstyled result-list">
-        <li>
+        <li ng-if="trials.length > 1">
             <a ui-sref=".all" ui-sref-active="active">&lt; compare all trials &gt;</a>
             <p> {{ trials.length }} trials over {{ getDateSpan(trials) }} days</p>
         </li>

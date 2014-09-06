@@ -17,7 +17,7 @@
   ],
   "dependencies": {
     "angular": "1.3.x",
-    "angular-route": "~1.3.x",
+    "angular-ui-router": "0.2.x",
     "angular-strap": "2.x",
     "angular-motion": "~0.3.2"
   },

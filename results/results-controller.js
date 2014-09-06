@@ -3,9 +3,7 @@ angular.module('pvtApp').controller('ResultsCtrl', function ($scope, $state, tri
     $scope.settings = settings;
 
     if ($state.is("results")) {
-        if ($scope.trials.length > 1) {
-            $state.go('.all');
-        }
+        $state.go('.all');
     }
 
     $scope.titleForTrial = function (trial) {
@@ -17,7 +15,7 @@ angular.module('pvtApp').controller('ResultsCtrl', function ($scope, $state, tri
         if (trials.length > 0) {
             var date1 = moment(trials[0].date);
             var date2 = moment(trials[trials.length - 1].date);
-            return date2.diff(date1, 'days');
+            return date2.diff(date1, 'days') + 1;
         }
         return 0;
     };

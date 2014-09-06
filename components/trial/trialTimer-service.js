@@ -18,6 +18,7 @@ angular.module('pvtApp').factory('trialTimer', function ($timeout, $interval) {
     };
 
     self.enable = function (duration) {
+        if (enabled) return;
         enabled = true;
         // If passed duration, then set a timeout to turn it off after that duration.
         if (duration) {
@@ -29,6 +30,7 @@ angular.module('pvtApp').factory('trialTimer', function ($timeout, $interval) {
     };
 
     self.disable = function () {
+        if (!enabled) return;
         $timeout.cancel(timeoutPromise);
         $timeout.cancel(donePromise);
         $interval.cancel(intervalPromise);
@@ -38,7 +40,7 @@ angular.module('pvtApp').factory('trialTimer', function ($timeout, $interval) {
     };
 
     self.start = function () {
-        if (!enabled) return;
+        if (!enabled || started) return;
         startTime = Date.now();
         started = true;
 
@@ -52,7 +54,7 @@ angular.module('pvtApp').factory('trialTimer', function ($timeout, $interval) {
     };
 
     self.stop = function () {
-        if (!(enabled && started)) return;
+        if (!enabled || !started) return;
         started = false;
         var time = Date.now() - startTime;
 

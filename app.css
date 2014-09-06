@@ -104,6 +104,10 @@ textarea {
 .choices a:hover { color: inherit; }
 .choices strong { color: black; }
 
+p a { color: black; }
+p a:hover { color: black; }
+p a:visited { color: black; }
+
 .view-container {
     display: block;
     margin: auto;
