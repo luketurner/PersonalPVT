@@ -21,7 +21,7 @@
     "angular-strap": "2.x",
     "angular-motion": "~0.3.3",
     "moment": "~2.8.3",
-    "chartjs": "~0.2.0",
+    "chartjs": "~1.0",
     "jquery": "~2.1.1",
     "bootstrap": "~3.2.0"
   },

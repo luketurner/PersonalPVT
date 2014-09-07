@@ -27,9 +27,25 @@ angular.module("pvtApp").controller('AllResultsCtrl', function ($scope, $window,
 
     var means = data.map(function (x) { return analyzeData(x.data).mean(); });
     var lapses = data.map(function (x) { return analyzeData(x.data).lapses(settings.lapse_threshold).length; });
-    var dates = data.map(function (x) { return moment(x.date).format("MMM Do h:mm a"); });
+    var dates = data.map(function (x) { return moment(x.date).format("MMM Do h:mm"); });
 
-    $scope.chartData = {
+    $scope.meanData = {
+        labels: dates,
+        datasets: [
+            {
+                label: "Mean",
+                fillColor: "rgba(200,200,200,0.2)",
+                strokeColor: "rgba(200,200,200,1)",
+                pointColor: "rgba(200,200,200,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(200,200,200,1)",
+                data: means
+            }
+        ]
+    };
+
+    $scope.lapseData = {
         labels: dates,
         datasets: [
             {
@@ -41,16 +57,6 @@ angular.module("pvtApp").controller('AllResultsCtrl', function ($scope, $window,
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(150,150,150,1)",
                 data: lapses
-            },
-            {
-                label: "Mean",
-                fillColor: "rgba(200,200,200,0.2)",
-                strokeColor: "rgba(200,200,200,1)",
-                pointColor: "rgba(200,200,200,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(200,200,200,1)",
-                data: means
             }
         ]
     };

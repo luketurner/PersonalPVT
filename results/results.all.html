@@ -1,5 +1,8 @@
-<h4>Mean resp. time and num. lapses over <span class="mini-btn"><span ng-click="modifyThreshold(-100)">←</span><span ng-click="modifyThreshold(100)">{{ lapseThreshold }}ms→</span></span></h4>
-<div class="scatter-plot"><scatter-plot data="chartData" options="chartSettings"></scatter-plot></div>
+<h4>Mean response time </h4>
+<div class="scatter-plot"><scatter-plot data="meanData" options="chartSettings"></scatter-plot></div>
+
+<h4>Num. lapses over <span class="mini-btn"><span ng-click="modifyThreshold(-100)">←</span><span ng-click="modifyThreshold(100)">{{ lapseThreshold }}ms→</span></span></h4>
+<div class="scatter-plot"><scatter-plot data="lapseData" options="chartSettings"></scatter-plot></div>
 
 <div class="row choices">
     <div class="col-xs-4"><a ui-sref="home">&lt; Back &gt;</a></div>
