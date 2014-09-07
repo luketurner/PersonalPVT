@@ -1,58 +1,38 @@
 <!doctype html>
 <html>
 	<head>
-		<title>Pie Chart</title>
+		<title>Radar Chart</title>
 		<script src="../Chart.js"></script>
+		<meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
+		<style>
+			canvas{
+			}
+		</style>
 	</head>
 	<body>
-		<div id="canvas-holder">
-			<canvas id="chart-area" width="300" height="300"/>
-		</div>
+		<canvas id="canvas" height="450" width="450"></canvas>
 
 
 	<script>
 
 		var pieData = [
 				{
-					value: 300,
-					color:"#F7464A",
-					highlight: "#FF5A5E",
-					label: "Red"
+					value: 30,
+					color:"#F38630"
 				},
 				{
-					value: 50,
-					color: "#46BFBD",
-					highlight: "#5AD3D1",
-					label: "Green"
+					value : 50,
+					color : "#E0E4CC"
 				},
 				{
-					value: 100,
-					color: "#FDB45C",
-					highlight: "#FFC870",
-					label: "Yellow"
-				},
-				{
-					value: 40,
-					color: "#949FB1",
-					highlight: "#A8B3C5",
-					label: "Grey"
-				},
-				{
-					value: 120,
-					color: "#4D5360",
-					highlight: "#616774",
-					label: "Dark Grey"
+					value : 100,
+					color : "#69D2E7"
 				}
-
+			
 			];
 
-			window.onload = function(){
-				var ctx = document.getElementById("chart-area").getContext("2d");
-				window.myPie = new Chart(ctx).Pie(pieData);
-			};
-
-
-
+	var myPie = new Chart(document.getElementById("canvas").getContext("2d")).Pie(pieData);
+	
 	</script>
 	</body>
 </html>
