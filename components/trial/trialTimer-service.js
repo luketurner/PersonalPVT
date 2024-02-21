@@ -66,6 +66,7 @@ angular.module('pvtApp').factory('trialTimer', function ($timeout, $interval) {
     };
 
     self.reset = function () {
+        self.disable();
         self.onStart.empty();
         self.onStop.empty();
         self.onEnable.empty();
