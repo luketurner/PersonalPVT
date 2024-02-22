@@ -32,7 +32,8 @@ angular.module('pvtApp').factory('trialStore', function ($window) {
                 });
             }
         }
-        return results;
+        // sort in chronological order
+        return results.sort(function (a, b) { return a.date - b.date; });
     };
 
     trialStore.deleteAll = function () {

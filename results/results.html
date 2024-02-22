@@ -6,7 +6,7 @@
             <a ui-sref=".all" ui-sref-active="active">&lt; compare all trials &gt;</a>
             <p> {{ trials.length }} trials over {{ getDateSpan(trials) }} days</p>
         </li>
-        <li ng-repeat="(index, trial) in trials">
+        <li ng-repeat="(index, trial) in trials.toReversed()">
             <a ui-sref=".trial({ trialId: idForTrial(trial) })" ui-sref-active="active"> {{ titleForTrial(trial) }} </a>
             <p>{{ textForTrial(trial) }}</p>
         </li>
