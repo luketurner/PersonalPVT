@@ -14,7 +14,11 @@ angular.module('pvtApp').factory('trialStore', function ($window) {
     };
 
     trialStore.load = function (id) {
-        return store.getItem(prefix + ',' + id).split(',').map(parseFloat);
+        const data = store.getItem(prefix + ',' + id);
+        if (!data) {
+            return [];
+        }
+        return data.split(',').map(parseFloat);
     };
 
     trialStore.remove = function (id) {
