@@ -8,7 +8,7 @@ angular.module('pvtApp').controller('ResultsCtrl', function ($scope, $state, tri
 
     $scope.titleForTrial = function (trial) {
         var date = moment(trial.date);
-        return date.format('MMM Do h:mm a');
+        return date.format(i18n.t('formats.trial_title'));
     };
 
     $scope.getDateSpan = function (trials) {

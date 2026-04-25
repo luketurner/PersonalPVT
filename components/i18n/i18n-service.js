@@ -48,6 +48,9 @@ angular.module("pvtApp").factory('i18n', function ($rootScope, $window) {
         if (!dictionaries[code]) { code = FALLBACK; }
         if (code === currentLocale) { return; }
         currentLocale = code;
+        // Sync moment's locale so date tokens like MMM render in the active language.
+        // Falls back silently to the current moment locale if the locale file isn't loaded.
+        if ($window.moment) { $window.moment.locale(code); }
         $rootScope.$broadcast('i18n.localeChanged', code);
     };
 

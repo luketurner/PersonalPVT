@@ -32,7 +32,11 @@
         <script src="components/settings/deleteAll-directive.js"></script>
         <script src="components/i18n/i18n-service.js"></script>
         <script src="components/i18n/locales/en.js"></script>
-        <!-- Add new locale files here, e.g. <script src="components/i18n/locales/th.js"></script> -->
+        <!--
+            When adding a new locale (e.g. th), also load the matching moment locale
+            file so date tokens like MMM/Do/h render in that language:
+                <script src="bower_components/moment/locale/th.js"></script>
+        -->
         <script src="components/i18n/languagePicker-directive.js"></script>
         <script src="components/i18n/i18n-init-run.js"></script>
         <!-- controllers -->
