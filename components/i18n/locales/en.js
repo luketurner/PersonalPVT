@@ -75,6 +75,10 @@ angular.module("pvtApp").run(function (i18n) {
                 line1_link: "take a test",
                 line1_suffix: ". gl;hf",
                 line2: "(Remember that data isn't shared across browsers)"
+            },
+            download: {
+                all_filename: "results_all",
+                trial_prefix: "result_"
             }
         },
 
