@@ -1,4 +1,4 @@
-angular.module('pvtApp').directive('deleteAll', function ($timeout, $state, $q) {
+angular.module('pvtApp').directive('deleteAll', function ($timeout, $state, $q, i18n) {
     return {
         scope: {
             ondelete: '&onDelete'
@@ -8,20 +8,29 @@ angular.module('pvtApp').directive('deleteAll', function ($timeout, $state, $q) 
         link: function (scope, element, attrs) {
             var acceptsInput = true;
             var messageIndex = 0;
+            var loading = false;
             var timeoutPromise;
             var messages = [
-                {msg: "Delete All", wait: 2},
-                {msg: "You sure?", wait: 2},
-                {msg: "Double sure?", wait: 0},
-                {msg: "You can't undo!", wait: 1},
-                {msg: "Deleted", wait: 1, delete: true}
+                {key: "deleteAll.states.start",    wait: 2},
+                {key: "deleteAll.states.confirm1", wait: 2},
+                {key: "deleteAll.states.confirm2", wait: 0},
+                {key: "deleteAll.states.warn",     wait: 1},
+                {key: "deleteAll.states.done",     wait: 1, delete: true}
             ];
+
+            var setMessage = function () {
+                scope.message = loading
+                    ? i18n.t("deleteAll.states.loading")
+                    : i18n.t(messages[messageIndex].key);
+            };
 
             element.on("$destroy", function () {
                 if (timeoutPromise) { $timeout.cancel(timeoutPromise); }
             });
 
-            scope.message = messages[messageIndex].msg;
+            scope.$on('i18n.localeChanged', setMessage);
+
+            setMessage();
             scope.step = function () {
                 if (!acceptsInput || messageIndex >= messages.length) {
                     return;
@@ -35,15 +44,18 @@ angular.module('pvtApp').directive('deleteAll', function ($timeout, $state, $q) 
                 }
 
                 if (msg.wait === 0) {
-                    scope.message = msg.msg;
+                    loading = false;
+                    setMessage();
                     return;
                 }
 
                 acceptsInput = false;
-                scope.message = " ... ";
+                loading = true;
+                setMessage();
                 timeoutPromise = $timeout(function () {
                     acceptsInput = true;
-                    scope.message = msg.msg;
+                    loading = false;
+                    setMessage();
                 }, msg.wait * 1000);
             };
         }

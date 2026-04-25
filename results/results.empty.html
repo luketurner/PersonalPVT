@@ -1,16 +1,15 @@
 
-<h4>You don't seem to have any data.</h4>
+<h4>{{ 'results.empty.heading' | translate }}</h4>
 
 <div class="row copy">
     <p class="col-xs-6 col-xs-offset-3">
-        Hey there! Before you can see your historical data and test results, you have to actually <a ui-sref="pretrial">
-        take a test</a>. gl;hf
+        {{ 'results.empty.line1_prefix' | translate }} <a ui-sref="pretrial">{{ 'results.empty.line1_link' | translate }}</a>{{ 'results.empty.line1_suffix' | translate }}
     </p>
     <p class="col-xs-6 col-xs-offset-3">
-        (Remember that data isn't shared across browsers)
+        {{ 'results.empty.line2' | translate }}
     </p>
     <div class="row choices">
-        <div class="col-xs-3 col-xs-offset-3"><a ui-sref="home">< Go Back ></a></div>
-        <div class="col-xs-3"><a ui-sref="pretrial"><strong>< Take Test ></strong></a></div>
+        <div class="col-xs-3 col-xs-offset-3"><a ui-sref="home">{{ 'nav.back' | translate }}</a></div>
+        <div class="col-xs-3"><a ui-sref="pretrial"><strong>{{ 'nav.take_test' | translate }}</strong></a></div>
     </div>
 </div>

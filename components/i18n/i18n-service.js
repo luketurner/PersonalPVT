@@ -1,0 +1,78 @@
+angular.module("pvtApp").factory('i18n', function ($rootScope, $window) {
+    var dictionaries = {};
+    var displayNames = {};
+    var FALLBACK = 'en';
+    var currentLocale = FALLBACK;
+
+    var register = function (code, displayName, dict) {
+        dictionaries[code] = dict;
+        displayNames[code] = displayName;
+    };
+
+    var detectBrowserLocale = function () {
+        var nav = $window.navigator;
+        var prefs = (nav.languages && nav.languages.slice())
+            || [nav.language || nav.userLanguage || ''];
+        for (var i = 0; i < prefs.length; i++) {
+            var raw = (prefs[i] || '').toLowerCase();
+            if (!raw) { continue; }
+            if (dictionaries[raw]) { return raw; }
+            var base = raw.split('-')[0];
+            if (dictionaries[base]) { return base; }
+        }
+        return FALLBACK;
+    };
+
+    var lookup = function (dict, key) {
+        var parts = key.split('.');
+        var node = dict;
+        for (var i = 0; i < parts.length; i++) {
+            if (node == null) { return undefined; }
+            node = node[parts[i]];
+        }
+        return typeof node === 'string' ? node : undefined;
+    };
+
+    var t = function (key) {
+        if (!key) { return ''; }
+        var hit = lookup(dictionaries[currentLocale], key);
+        if (hit !== undefined) { return hit; }
+        if (currentLocale !== FALLBACK) {
+            hit = lookup(dictionaries[FALLBACK], key);
+            if (hit !== undefined) { return hit; }
+        }
+        return key;
+    };
+
+    var setLocale = function (code) {
+        if (!dictionaries[code]) { code = FALLBACK; }
+        if (code === currentLocale) { return; }
+        currentLocale = code;
+        $rootScope.$broadcast('i18n.localeChanged', code);
+    };
+
+    return {
+        register: register,
+        detectBrowserLocale: detectBrowserLocale,
+        setLocale: setLocale,
+        getLocale: function () { return currentLocale; },
+        getSupportedLocales: function () {
+            var out = [];
+            for (var code in dictionaries) {
+                if (dictionaries.hasOwnProperty(code)) {
+                    out.push({ code: code, name: displayNames[code] });
+                }
+            }
+            return out;
+        },
+        t: t
+    };
+});
+
+angular.module("pvtApp").filter('translate', function (i18n) {
+    var translateFilter = function (key) {
+        return i18n.t(key || '');
+    };
+    translateFilter.$stateful = true;
+    return translateFilter;
+});

@@ -113,6 +113,19 @@ p a:visited { color: black; }
 .trial-timer .close { position: fixed; top: 5px; right: 5px; z-index: 1000; }
 .trial-timer h1 { margin-top: 15%; }
 
+.language-picker { position: fixed; bottom: 10px; right: 10px; z-index: 1000; }
+.language-picker select {
+    font: inherit;
+    font-size: 12px;
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #fff;
+    color: #333;
+    cursor: pointer;
+}
+.language-picker select:hover { border-color: #888; }
+
 .result-list { text-align:left; color: #888; }
 .result-list a { color: #333; font-weight: bold; }
 .result-list a:hover { color: inherit; }

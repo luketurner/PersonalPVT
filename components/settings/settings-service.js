@@ -30,6 +30,7 @@ angular.module("pvtApp").factory('settings', function ($rootScope, $window) {
     makeSetting("lapse_threshold", saved.lapse_threshold || 500); // lapse threshold in ms
     makeSetting("trial_length", saved.trial_length || 600); // length of trial in seconds
     makeSetting("show_instructions", saved.show_instructions === false ? false : true);
+    makeSetting("language", saved.language || null); // null => i18n-init-run.js will detect from browser
 
     return settings;
 });

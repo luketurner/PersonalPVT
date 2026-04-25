@@ -1,4 +1,4 @@
-angular.module('pvtApp').controller('ResultsCtrl', function ($scope, $state, trialStore, analyzeData, settings) {
+angular.module('pvtApp').controller('ResultsCtrl', function ($scope, $state, trialStore, analyzeData, settings, i18n) {
     $scope.trials = trialStore.all();
     $scope.settings = settings;
 
@@ -22,7 +22,8 @@ angular.module('pvtApp').controller('ResultsCtrl', function ($scope, $state, tri
 
     $scope.textForTrial = function (trial) {
         var data = analyzeData(trial.data);
-        return "Mean "+data.mean().toPrecision(4)+" | Lapses "+data.lapses(settings.lapse_threshold).length;
+        return i18n.t('results.summary.mean') + " " + data.mean().toPrecision(4) +
+            " | " + i18n.t('results.summary.lapses') + " " + data.lapses(settings.lapse_threshold).length;
     };
 
     $scope.idForTrial = function (trial) {

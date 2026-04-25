@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>PersonalPVT</title>
+        <title ng-bind="('app.title' | translate)">PersonalPVT</title>
         <meta name="description" content="Psychomotor Vigilance Task application for personal testing">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -30,6 +30,11 @@
         <script src="components/trial/timerDisplay-directive.js"></script>
         <script src="components/settings/settings-service.js"></script>
         <script src="components/settings/deleteAll-directive.js"></script>
+        <script src="components/i18n/i18n-service.js"></script>
+        <script src="components/i18n/locales/en.js"></script>
+        <!-- Add new locale files here, e.g. <script src="components/i18n/locales/th.js"></script> -->
+        <script src="components/i18n/languagePicker-directive.js"></script>
+        <script src="components/i18n/i18n-init-run.js"></script>
         <!-- controllers -->
         <script src="home/home-controller.js"></script>
         <script src="pretrial/pretrial-controller.js"></script>
@@ -43,5 +48,6 @@
     </head>
     <body ng-app="pvtApp">
         <div class="viewtiful container" ui-view></div>
+        <language-picker></language-picker>
     </body>
 </html>
