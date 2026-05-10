@@ -4,7 +4,7 @@
     <ul class="list-unstyled result-list">
         <li ng-if="trials.length > 1">
             <a ui-sref=".all" ui-sref-active="active">{{ 'nav.compare_all' | translate }}</a>
-            <p> {{ trials.length }} {{ 'results.trials_summary_prefix' | translate }} {{ getDateSpan(trials) }} {{ 'results.trials_summary_suffix' | translate }}</p>
+            <p>{{ 'results.trials_summary' | translate:{ count: trials.length, days: getDateSpan(trials) } }}</p>
         </li>
         <li ng-repeat="(index, trial) in trials.toReversed()">
             <a ui-sref=".trial({ trialId: idForTrial(trial) })" ui-sref-active="active"> {{ titleForTrial(trial) }} </a>

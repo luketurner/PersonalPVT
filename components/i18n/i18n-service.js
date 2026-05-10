@@ -33,15 +33,21 @@ angular.module("pvtApp").factory('i18n', function ($rootScope, $window) {
         return typeof node === 'string' ? node : undefined;
     };
 
-    var t = function (key) {
+    var format = function (str, params) {
+        if (!params) { return str; }
+        return str.replace(/\{(\w+)\}/g, function (match, name) {
+            return params.hasOwnProperty(name) ? params[name] : match;
+        });
+    };
+
+    var t = function (key, params) {
         if (!key) { return ''; }
         var hit = lookup(dictionaries[currentLocale], key);
-        if (hit !== undefined) { return hit; }
-        if (currentLocale !== FALLBACK) {
+        if (hit === undefined && currentLocale !== FALLBACK) {
             hit = lookup(dictionaries[FALLBACK], key);
-            if (hit !== undefined) { return hit; }
         }
-        return key;
+        if (hit === undefined) { return key; }
+        return format(hit, params);
     };
 
     var setLocale = function (code) {
@@ -73,8 +79,8 @@ angular.module("pvtApp").factory('i18n', function ($rootScope, $window) {
 });
 
 angular.module("pvtApp").filter('translate', function (i18n) {
-    var translateFilter = function (key) {
-        return i18n.t(key || '');
+    var translateFilter = function (key, params) {
+        return i18n.t(key || '', params);
     };
     translateFilter.$stateful = true;
     return translateFilter;

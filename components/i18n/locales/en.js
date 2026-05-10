@@ -55,8 +55,7 @@ angular.module("pvtApp").run(function (i18n) {
 
         results: {
             title: "Results",
-            trials_summary_prefix: "trials over",
-            trials_summary_suffix: "days",
+            trials_summary: "{count} trials over {days} days",
             response_times: "Response times",
             summary: {
                 mean: "Mean",
