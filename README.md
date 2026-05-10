@@ -24,3 +24,7 @@ You can create a custom link to set the default trial length, for sharing with o
 ```
 https://luketurner.org/PersonalPVT/#/?setTrialLength=150
 ```
+
+## Languages
+
+PersonalPVT is available in both English and Thai.
