@@ -113,18 +113,27 @@ p a:visited { color: black; }
 .trial-timer .close { position: fixed; top: 5px; right: 5px; z-index: 1000; }
 .trial-timer h1 { margin-top: 15%; }
 
-.language-picker { position: fixed; bottom: 10px; right: 10px; z-index: 1000; }
-.language-picker select {
+.language-picker {
+    position: fixed; bottom: 10px; right: 10px; z-index: 1000;
+    display: flex; gap: 4px;
+}
+.language-picker button {
     font: inherit;
     font-size: 12px;
-    padding: 4px 8px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+    padding: 4px;
+    border: none;
     background: #fff;
     color: #333;
     cursor: pointer;
+    
 }
-.language-picker select:hover { border-color: #888; }
+.language-picker button.is-selected {
+    font-weight: bold;
+    cursor: default;
+}
+.language-picker button:hover { text-decoration: underline; }
+.language-picker button.is-selected:hover { text-decoration: none; }
+
 
 .result-list { text-align:left; color: #888; }
 .result-list a { color: #333; font-weight: bold; }
