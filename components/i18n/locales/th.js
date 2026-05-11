@@ -99,9 +99,9 @@ angular.module("pvtApp").run(function (i18n) {
 
         // moment.js format strings; tokens like MMM/Do/h are auto-translated by
         // moment.locale(). Locales can override these to pick a totally different shape.
-        // formats: {
-        //     trial_title: "MMM Do h:mm a",
-        //     chart_date: "MMM Do h:mm"
-        // }
+        formats: {
+            trial_title: "D MMM H:mm",
+            chart_date: "D MMM H:mm"
+        }
     });
 });
